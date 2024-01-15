@@ -15,7 +15,7 @@ This is a SDA final project for online shopping service with front and back offi
 ## Wiki
 
 Added wiki page for more info.
-[Link to Wiki](https://github.com/Jann337/PythonFinalProject/wiki)
+[Link](https://github.com/Jann337/PythonFinalProject/wiki)
 
 ### Installation
 
