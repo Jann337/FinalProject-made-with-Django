@@ -1,13 +1,21 @@
 ﻿## Table of Contents
+ 
 
--   [Table of Contents](#table-of-contents)
--   [Introduction](#introduction)
-    -   [Installation](#installation)
--   [Working with Branches and Trello](#working-with-branches-and-trello)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Wiki](#Wiki)
+- [Installation](#installation)
+- [Working with Branches and Trello](#working-with-branches-and-trello)
+
 
 ## Introduction
 
 This is a SDA final project for online shopping service with front and back office written in Django.
+
+## Wiki
+
+Added wiki page for more info.
+[Link to Wiki](https://github.com/Jann337/PythonFinalProject/wiki)
 
 ### Installation
 
