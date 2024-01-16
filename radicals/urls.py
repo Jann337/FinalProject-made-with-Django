@@ -29,6 +29,7 @@ urlpatterns = [
     path('back_office/products/', include('back_office.products.urls')),
     path('back_office/sales/', include('back_office.sales.urls')),
     path('back_office/settings/', include('back_office.settings.urls')),
+    path('back_office/supplier/', include('back_office.supplier_login.urls')),
     path('about/', include('front_office.about_page.urls')),
     path('accounts/', include('front_office.account_page.urls')),
     path('contacts/', include('front_office.contacts_page.urls')),
