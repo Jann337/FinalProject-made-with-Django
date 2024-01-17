@@ -5,16 +5,16 @@
     <div class="bg-dark sidebar">
       <ul class="list-unstyled">
         <li class="sidebar-item">
-          <a class="nav-link" href="{% url 'customers' %}">Customers</a>
+          <a class="nav-link" href="{% url 'customers:customers' %}">Customers</a>
         </li>
         <li class="sidebar-item">
-          <a class="nav-link" href="{% url 'invoices' %}">Invoices</a>
+          <a class="nav-link" href="{% url 'invoices:invoices' %}">Invoices</a>
         </li>
         <li class="sidebar-item">
-          <a class="nav-link" href="{% url 'orders' %}">Orders</a>
+          <a class="nav-link" href="{% url 'back_office_orders:orders' %}">Orders</a>
         </li>
         <li class="sidebar-item">
-          <a class="nav-link" href="{% url 'backoffice_products' %}">Products</a>
+          <a class="nav-link" href="{% url 'backoffice_products:products' %}">Products</a>
         </li>
         <li class="sidebar-item">
           <a class="nav-link" href="#">Sales</a>

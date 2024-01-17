@@ -21,7 +21,7 @@
           {% for customer in customers %}
             <tr>
               <td>
-                <a class="text-link" href="{% url 'customer_detail' customer.id %}">
+                <a class="text-link" href="{% url 'customers:customer_detail' customer.id %}">
                   {% if customer.user.first_name %}
                     {{ customer.user.first_name }}
                     {{ customer.user.last_name }}

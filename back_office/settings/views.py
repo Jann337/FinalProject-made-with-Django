@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Variables
 from django.http import HttpResponseBadRequest
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='supplier:login')
 def settings(request):
     variables, created = Variables.objects.get_or_create(
         pk=1)

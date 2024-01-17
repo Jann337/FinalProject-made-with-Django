@@ -22,7 +22,7 @@
           {% for order in orders %}
             <tr>
               <td>
-                <a class="text-link" href="{% url 'order_detail' order.order_number %}">{{ order.order_number }}</a>
+                <a class="text-link" href="{% url 'back_office_orders:order_detail' order.order_number %}">{{ order.order_number }}</a>
               </td>
               <td>{{ order.order_user  }}</td>
               <td>{{ order.order_products.count }}</td>

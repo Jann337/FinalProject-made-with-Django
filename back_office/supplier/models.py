@@ -5,14 +5,14 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class UserDetail(models.Model):
+class SupplierDetail(models.Model):
     total_amount_spent = models.FloatField(default=0)
     total_orders_completed = models.PositiveIntegerField(default=0)
     user_products = models.ManyToManyField(user_product, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    supplier = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.supplier.first_name} {self.supplier.last_name}'
 
     class Meta:
-        verbose_name = "Customer"
+        verbose_name = "Supplier"
