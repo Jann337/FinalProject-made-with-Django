@@ -1,5 +1,5 @@
 from django.db import models
-from back_office.back_products.models import Product as user_product
+from back_office.products.models import Product as user_product
 from django.contrib.auth.models import User
 
 # Create your models here.

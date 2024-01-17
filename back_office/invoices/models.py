@@ -1,7 +1,7 @@
 from django.db import models
 import random
-from back_office.back_products.models import Product
-from back_office.back_products.models import Discount as order_discount
+from back_office.products.models import Product
+from back_office.products.models import Discount as order_discount
 from back_office.customers.models import UserDetail
 
 # Create your models here.

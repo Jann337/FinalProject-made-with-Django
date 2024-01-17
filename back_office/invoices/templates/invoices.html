@@ -16,7 +16,7 @@
                 <tbody>
                     {% for invoice in invoices %}
                     <tr>
-                        <td><a class="text-link" href="{% url 'invoice_detail' invoice.id %}" >{{invoice.invoice_number}}</a></td>
+                        <td><a class="text-link" href="{% url 'invoice:invoice_detail' invoice.id %}" >{{invoice.invoice_number}}</a></td>
                         <td>{{invoice.customer}}</td>
                         <td>{{invoice.total_price}}</td>
                         <td>
