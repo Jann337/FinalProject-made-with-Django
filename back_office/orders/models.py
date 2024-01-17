@@ -1,6 +1,6 @@
 from django.db import models
-from back_office.products.models import Product
-from back_office.products.models import Discount as order_discount
+from back_office.back_products.models import Product
+from back_office.back_products.models import Discount as order_discount
 from back_office.customers.models import UserDetail
 from django.db.models.signals import post_save
 from django.dispatch import receiver

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Your Shopping Cart
+{% endblock title %}
+{% block body %}
+  <style>
+    #message-container {
+      position: fixed;
+      top: 2;
+      /* Display the container at the top of the page */
+      width: 50%;
+      /* Take up the full width of the page */
+      z-index: 20000;
+      /* Set a higher z-index to ensure the messages will be displayed above other content */
+    }
+  </style>
+  <link rel="stylesheet" href="{% static 'shopping_cart.css' %}">
+
+  {% block content %}
+    <div id="message-container">
+      {% for message in messages %}
+        <div class="offset-4 py-4 text-center container">
+          <div class="alert alert-light" role="alert">
+            {{ message }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if total_items_in_cart >= 1 %}
+      <section class="py-5 text-right container">
+        <div class="row py-lg-5 col-lg-10">
+
+          <h2 class="fw-light">Your Shopping Cart
+
+            <span class="badge bg-light text-dark">{{ total_items_in_cart }}</span>
+
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Manufacturer</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order_item in order_items %}
+                <tr>
+                  <td>
+                    <a href="{% url "products:product_details" %}" class="text-link">
+                      {{ order_item.product.name }}
+                    </a>
+                  </td>
+                  <td>{{ order_item.product.category.title }}</td>
+                  <td>{{ order_item.product.brand.name }}</td>
+                  <td>€{{ order_item.product.price }}</td>
+                  <td>
+                    <form method="post" action="{% url 'shopping_cart:update_cart' %}" class="smaller-form">
+                      {% csrf_token %}
+                      <input type="hidden" name="order_item_id" value="{{ order_item.id }}">
+                      <input type="number" name="quantity" value="{{ order_item.quantity }}">
+                      <button type="submit" name="increment" value="1" class="btn btn-secondary">&#43</button>
+                      <button type="submit" name="decrement" value="1" class="btn btn-secondary">
+                        &#45</button>
+                      <td></form>
+                      <form method="post" action="{% url 'shopping_cart:remove_from_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_item_id" value="{{ order_item.id }}">
+                        <button type="submit" class="btn btn-secondary mt-auto">&#x10102</button>
+                      </form>
+                    </td>
+                    <td></td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <div class="offset-9 col-lg-4 col-md-7 mt-5">
+
+              <h3 class="fw-light">
+                Total Price €{{ total_order_cost }}<br></h3>
+
+            </div>
+
+            <div class="offset-9 col-lg-3 col-md-7 row py-lg-2">
+
+              <a href="{% url 'checkout:checkout' %}" class="btn btn-success mt-auto" role="button">Order now</a>
+            </div>
+            <div class="offset-9 col-lg-3 col-md-7 row py-lg-2">
+              <a href="{% url "products:products" %}" class="btn btn-warning mt-auto" role="button">Continue shopping</a>
+            </div>
+
+          {% else %}
+
+            <div class="offset-2 py-5 text-center container">
+              <div class="row py-lg-5 col-lg-10">
+
+                <h1 class="fw-light">Your shopping cart is empty
+                </h1>
+                <div class="offset-5 col-lg-3 col-md-5 row py-lg-1 mt-3">
+                  <a href="{% url "products:products" %}" class="btn btn-secondary mt-auto" role="button">Go to Products</a>
+                </div>
+
+              </div>
+            </section>
+
+          {% endif %}
+
+        {% endblock content %}
+
+      {% endblock body %}
