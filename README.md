@@ -25,7 +25,7 @@ This is a SDA final project for online shopping service with front and back offi
     Mac
 
     ```bash
-    Create: python3 -m venv venv
+    Create: python -m venv venv
     Activate: source venv/bin/activate
     ```
 
