@@ -33,7 +33,7 @@ Added wiki page for more info.
     Mac
 
     ```bash
-    Create: python3 -m venv venv
+    Create: python -m venv venv
     Activate: source venv/bin/activate
     ```
 
