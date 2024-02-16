@@ -9,7 +9,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from back_office.customers.models import UserDetail
 
 
-def register(request):
+def register_customer(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -24,7 +24,7 @@ def register(request):
     return render(request=request, template_name="register.html", context={"register_form": form})
 
 
-def login(request):
+def login_customer(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -43,7 +43,7 @@ def login(request):
     return render(request=request, template_name="login.html", context={"login_form": form})
 
 
-def logout(request):
+def logout_customer(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("home_page:home")
