@@ -9,7 +9,9 @@ from back_office.customers.models import UserDetail
 
 class InvoiceDetail(models.Model):
     invoice_number = models.PositiveIntegerField(
-        default=random.randint(0, 9999))
+        default=1234567890, unique=True)
+    # invoice_number = models.PositiveIntegerField(
+    #   default=random.randint(0, 9999))
     customer = models.OneToOneField(
         UserDetail, on_delete=models.SET_NULL, null=True)
     list_of_products = models.ManyToManyField(Product, blank=True)
