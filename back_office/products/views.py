@@ -1,35 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from .models import Product, Supplier
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render
+from .forms import ProductForm
 
-
-@login_required(login_url='supplier:login')
-def products(request):
-    if request.user.is_authenticated:
-        try:
-            supplier = Supplier.objects.get(user=request.user)
-            products = Product.objects.filter(
-                supplier=supplier).order_by('name')
-        except Supplier.DoesNotExist:
-            products = Product.objects.none()
+def add(request):
+    if request.method == 'POST':
+        form = AddProductForm(request.POST)
+        if form.is_valid():
+            # Process the form data
+            return HttpResponseRedirect('/success/')  # Redirect after POST
     else:
-        products = Product.objects.all().order_by('name')
-
-    paginator = Paginator(products, 6)
-    page_number = request.GET.get('page')
-
-    try:
-        products = paginator.page(page_number)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
-
-    return render(request, 'backoffice_products.html', {'products': products})
-
-
-@login_required(login_url='supplier:login')
-def product_detail(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'backoffice_product_details.html', {'product': product})
+        form = ProductForm()
+    return render(request, 'backoffice_products.html', {'form': form})
